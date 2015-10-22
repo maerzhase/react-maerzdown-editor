@@ -1,3 +1,3 @@
 'use strict';
 
-module.exports = require('./dist/MarkdownEditor');
+module.exports = require('./src/MaerzdownEditor');
