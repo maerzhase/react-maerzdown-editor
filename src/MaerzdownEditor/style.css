@@ -1,0 +1,80 @@
+
+  h1,h2,h3,h4,h5,h6{
+    text-align: left;
+  }
+
+  .toolbar{
+    margin-bottom:15px;
+  }
+
+  .preview-col.col-xs-12{
+    margin-left: 10px;
+  }
+
+  textarea{
+    background: #ddd;
+    resize:none;
+  }
+  
+  .markdown-preview{
+    padding:0 20px 0 20px;
+    overflow:auto;
+
+  }
+    img{
+      max-width: 200px;
+    }
+
+  .editor{
+
+
+  }
+
+    .markdown-preview{
+      max-height:300px;
+    }
+    textarea{
+      min-height:300px;
+    }
+
+    .editor-col, .toolbar{
+      display:none;
+    }
+
+  .fullscreen-editor{
+    display:none;
+    width:100%;
+    height:100%;
+    position:fixed;
+    background:#fff;
+    top:0;
+    left:0;
+    z-index: 100;
+    padding:20px;
+    overflow:hidden;
+  }
+
+      .form-group, .editor-row,
+    .editor-col, textarea,
+    .preview-col{
+      height:95%;
+    }
+
+    .toolbar{
+      display: block;
+    }
+    
+    .editor-row{
+    }
+
+    .editor-col{
+      display:block;
+    }
+
+    textarea{
+    }
+
+    .markdown-preview{
+      height:95%;
+      overflow-y:scroll;
+    }
