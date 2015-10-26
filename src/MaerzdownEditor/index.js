@@ -1,9 +1,6 @@
-'use strict';
-
-import React from 'react';
-
+import React, { Component, PropTypes } from 'react';
+import ReactDOM from 'react-dom';
 import styles from './style.less';
-
 
 export default class MaerzdownEditor extends React.Component {
 

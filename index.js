@@ -1,3 +1,5 @@
-'use strict';
+'use strict'
 
-module.exports = require('./src/MaerzdownEditor');
+import MaerzdownEditor from './src/MaerzdownEditor'
+
+export { MaerzdownEditor }

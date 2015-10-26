@@ -2,28 +2,35 @@
   "name": "react-maerzdown-editor",
   "version": "0.9.1",
   "description": "A markdown editor react component. Write markdown with live-preview and fullscreen functionality.",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "author": "maerzhase",
+  "license": "ISC",
+  "keywords": [
+    "react",
+    "markdown",
+    "editor"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/maerzhase/react-maerzdown-editor.git"
   },
-  "keywords": [
-    "react",
-    "markdown",
-    "editor",
-    "npm",
-    "node"
-  ],
-  "author": "maerzhase",
-  "license": "ISC",
   "bugs": {
     "url": "https://github.com/maerzhase/react-maerzdown-editor/issues"
   },
   "homepage": "https://github.com/maerzhase/react-maerzdown-editor#readme",
+  "main": "index.js",
+  "browserify": {
+    "transform": [
+      "babelify"
+    ]
+  },
   "dependencies": {
-    "react": "^0.14.0"
+    "babelify": "6.3.0"
+  },
+  "devDependencies": {
+    "browserify": "~11.0.1"
+  },
+  "peerDependencies": {
+    "react": ">= 0.14.0",
+    "react-dom": ">= 0.14.0"
   }
 }
