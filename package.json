@@ -9,6 +9,7 @@
     "markdown",
     "editor"
   ],
+  "main": "lib/index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/maerzhase/react-maerzdown-editor.git"
@@ -17,22 +18,11 @@
     "url": "https://github.com/maerzhase/react-maerzdown-editor/issues"
   },
   "homepage": "https://github.com/maerzhase/react-maerzdown-editor#readme",
-  "main": "index.js",
-  "browserify": {
-    "transform": [
-      "babelify",
-      "css-modulesify"
-    ]
-  },
   "dependencies": {
-    "babelify": "6.3.0",
-    "react-bootstrap": "^0.27.2",
-    "react-fontawesome": "^0.3.3",
+    "react-style": "^0.5.5",
     "remarkable": "^1.6.0"
   },
-  "devDependencies": {
-    "browserify": "~11.0.1"
-  },
+  "devDependencies": {},
   "peerDependencies": {
     "react": ">= 0.14.0",
     "react-dom": ">= 0.14.0"
