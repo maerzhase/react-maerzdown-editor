@@ -1,6 +1,6 @@
 {
   "name": "react-maerzdown-editor",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "A markdown editor react component. Write markdown with live-preview and fullscreen functionality.",
   "author": "maerzhase",
   "license": "ISC",
