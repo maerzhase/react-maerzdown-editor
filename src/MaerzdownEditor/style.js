@@ -20,6 +20,8 @@ var styles = StyleSheet.create({
 
     textarea:{
       maxWidth:'100%',
+      width:'100%',
+      resize: 'vertical',
     },
 
     preview:{

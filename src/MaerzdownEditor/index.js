@@ -53,10 +53,10 @@ export default class MaerzdownEditor extends React.Component {
       let textBefore = text.substring(0, selectionStart-btnVal.length),
           selectedText = text.substring(selectionStart, selectionEnd),
           textAfter = text.substring(selectionEnd+btnVal.length, text.length),
-          newText = (textBefore.length > 0 ? (textBefore + " ") : "") + selectedText + (textAfter.length > 0 ? (" " + textAfter) : "");
+          newText = (textBefore.length > 0 ? (textBefore + "") : "") + selectedText + (textAfter.length > 0 ? ("" + textAfter) : "");
 
         textarea.value = newText;
-        textarea.selectionStart = selectionStart - (btnVal.length);
+        textarea.selectionStart = selectionStart - btnVal.length;
         textarea.selectionEnd = selectionEnd - (btnVal.length);
         this.setState({content:newText});
 
@@ -91,7 +91,7 @@ export default class MaerzdownEditor extends React.Component {
 
     return(  
       <div className="maerzdownEditor" style={fullscreen}>
-        <div>
+        <div className="button-toolbar">
           <button onClick={this._toggleFullscreen}>Fullscreen</button>
           <button onClick={this._handleAppendToText} value="# ">#</button>
           <button onClick={this._handleAppendToText} value="## ">##</button>
