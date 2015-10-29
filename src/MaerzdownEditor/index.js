@@ -12,7 +12,7 @@ export default class MaerzdownEditor extends React.Component {
     this._toggleFullscreen = this._toggleFullscreen.bind(this);
     this._handleTextareaChange = this._handleTextareaChange.bind(this);
     this._handleAppendToText = this._handleAppendToText.bind(this);
-    this._handleTextSelection = this._handleTextSelection.bind(this);
+    this._handleTextEmphasize = this._handleTextEmphasize.bind(this);
   }
 
   _handleTextareaChange(e){
@@ -38,35 +38,51 @@ export default class MaerzdownEditor extends React.Component {
         this.setState({content:newText});
   }
 
-  _handleTextSelection(e){
+  _handleTextEmphasize(e){
     let textarea = this.refs.textarea.getDOMNode(),
         text = textarea.value,
         btnVal = e.target.value,
         defaultValue = "default",
         selectionStart = textarea.selectionStart,
-        selectionEnd = textarea.selectionEnd;
-    
-    //if nothing selected
-    if(selectionStart == selectionEnd){
-        let textBefore = text.substring(0,  selectionStart ),
-            textAfter  = text.substring( selectionStart, text.length ),
-            newText = textBefore + btnVal + defaultValue + btnVal + textAfter;
+        selectionEnd = textarea.selectionEnd,
+        singsBefore = text.substring(selectionStart-btnVal.length,selectionStart),
+        singsAfter = text.substring(selectionEnd,selectionEnd+btnVal.length);
+
+
+    if(singsAfter == singsBefore && singsBefore == btnVal && singsAfter == btnVal){
+      let textBefore = text.substring(0, selectionStart-btnVal.length),
+          selectedText = text.substring(selectionStart, selectionEnd),
+          textAfter = text.substring(selectionEnd+btnVal.length, text.length),
+          newText = (textBefore.length > 0 ? (textBefore + " ") : "") + selectedText + (textAfter.length > 0 ? (" " + textAfter) : "");
 
         textarea.value = newText;
-        textarea.selectionStart = selectionStart + (btnVal.length);
-        textarea.selectionEnd = selectionStart + (btnVal.length + defaultValue.length);
-        this.setState({content:newText});   
+        textarea.selectionStart = selectionStart - (btnVal.length);
+        textarea.selectionEnd = selectionEnd - (btnVal.length);
+        this.setState({content:newText});
 
     }else{
-        let textBefore = text.substring(0,  selectionStart),
-            selectedText = text.substring(selectionStart,selectionEnd),
-            textAfter  = text.substring( selectionEnd, text.length ),
-            newText = textBefore + btnVal + selectedText + btnVal + textAfter;
+      //if nothing selected
+      if(selectionStart == selectionEnd){
+          let textBefore = text.substring(0,  selectionStart ),
+              textAfter  = text.substring( selectionStart, text.length ),
+              newText = textBefore + btnVal + defaultValue + btnVal + textAfter;
 
-        textarea.value = newText;
-        textarea.selectionStart = selectionStart + (btnVal.length);
-        textarea.selectionEnd = selectionStart + (btnVal.length + selectedText.length);
-        this.setState({content:newText});
+          textarea.value = newText;
+          textarea.selectionStart = selectionStart + (btnVal.length);
+          textarea.selectionEnd = selectionStart + (btnVal.length + defaultValue.length);
+          this.setState({content:newText});   
+
+      }else{
+          let textBefore = text.substring(0,  selectionStart),
+              selectedText = text.substring(selectionStart,selectionEnd),
+              textAfter  = text.substring( selectionEnd, text.length ),
+              newText = textBefore + btnVal + selectedText + btnVal + textAfter;
+
+          textarea.value = newText;
+          textarea.selectionStart = selectionStart + (btnVal.length);
+          textarea.selectionEnd = selectionStart + (btnVal.length + selectedText.length);
+          this.setState({content:newText});
+      }
     }
   }
 
@@ -81,11 +97,11 @@ export default class MaerzdownEditor extends React.Component {
           <button onClick={this._handleAppendToText} value="## ">##</button>
           <button onClick={this._handleAppendToText} value="### ">###</button>
           <button onClick={this._handleAppendToText} value="#### ">####</button>
-          <button onClick={this._handleTextSelection} value="*">*</button>
-          <button onClick={this._handleTextSelection} value="**">**</button>
-          <button onClick={this._handleTextSelection} value="++">++</button>
-          <button onClick={this._handleTextSelection} value="~~">~~</button>
-          <button onClick={this._handleTextSelection} value="```">CODE</button>
+          <button onClick={this._handleTextEmphasize} value="*">*</button>
+          <button onClick={this._handleTextEmphasize} value="**">**</button>
+          <button onClick={this._handleTextEmphasize} value="++">++</button>
+          <button onClick={this._handleTextEmphasize} value="~~">~~</button>
+          <button onClick={this._handleTextEmphasize} value="```">CODE</button>
         </div>
         <div>
           <div className="editor" ref="editor" style={styles.editor}>
